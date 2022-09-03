@@ -30,8 +30,15 @@ const getCategoryId = (category_id) => {
 const showNewsInCategory = (newses) => {
   console.log(newses);
   const newsItemsContainer = document.getElementById('news-items-container');
+  const notFound = document.getElementById("not-found");
   newsItemsContainer.innerText = "";
-  
+  notFound.textContent = "";
+
+  if(newses.length === 0){
+    // console.log('Not Found')
+    notFound.innerHTML = `<h2 class="text-5xl text-center text-red-600 font-semibold">No News Found</h2>`
+    return;
+  }
   newses.forEach(category => {
     // console.log(category.category_id);
     const {thumbnail_url, title, details} = category
