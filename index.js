@@ -74,7 +74,7 @@ const showNewsInCategory = (newses) => {
                     <input type="radio" name="rating-1" class="mask mask-star" />
                     <input type="radio" name="rating-1" class="mask mask-star" />
                   </div>
-                  <label for="my-modal-3" onclick="loadNewsDetails('${thumbnail_url}')" class="btn modal-button px-8 bg-red-600">Details</label>
+                  <label for="my-modal-3" onclick="loadNewsDetails('${news_id}}')" class="btn modal-button px-8 bg-red-600">Details</label>
 
                   </div>
               </div>
@@ -87,22 +87,22 @@ const loadNewsDetails = async news_id => {
   const url = `https://openapi.programming-hero.com/api/news/${news_id}`
   const res = await fetch(url);
   const data = await res.json();
-  displayNewsDetails(data.data);
+  console.log(data.data.news_id);
 }
 
-const displayNewsDetails = (category) =>{
+const displayNewsDetails = (news) =>{
   // console.log(news);
   const modalTitle = document.getElementById('newsDetailModalLabel')
-  modalTitle.innerText = category.title;
+  modalTitle.innerText = "${news.title}";
   const newsDetails = document.getElementById('news-details');
   newsDetails.innerHTML = `
-  <img src="${category.thumbnail_url}">
+  <img src="${news.thumbnail_url}">
   `;
    
 };        
 
 
-loadNewsCategories();
+loadNewsCategories('8');
 
 
 
