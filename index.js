@@ -74,7 +74,7 @@ const showNewsInCategory = (newses) => {
                     <input type="radio" name="rating-1" class="mask mask-star" />
                     <input type="radio" name="rating-1" class="mask mask-star" />
                   </div>
-                  <label for="my-modal-3" onclick="loadNewsDetails('${news_id}}')" class="btn modal-button px-8 bg-red-600">Details</label>
+                  <label for="my-modal-3" onclick="loadNewsDetails('${thumbnail_url}}')" class="btn modal-button px-8 bg-red-600">Details</label>
 
                   </div>
               </div>
