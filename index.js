@@ -73,9 +73,8 @@ const showNewsInCategory = (newses) => {
                     <input type="radio" name="rating-1" class="mask mask-star" />
                     <input type="radio" name="rating-1" class="mask mask-star" />
                     <input type="radio" name="rating-1" class="mask mask-star" />
-                  </div>
-                  <label for="my-modal-3" onclick="loadNewsDetails('${thumbnail_url}}')" class="btn modal-button px-8 bg-red-600">Details</label>
-
+                  </div class="card-actions">
+                  <label for="my-modal-3" onclick="showModal('${thumbnail_url}')" class="btn modal-button bg-red-600">Display</label>
                   </div>
               </div>
               `;
@@ -83,26 +82,38 @@ const showNewsInCategory = (newses) => {
   })
 
 }
-const loadNewsDetails = async news_id => {
-  const url = `https://openapi.programming-hero.com/api/news/${news_id}`
-  const res = await fetch(url);
-  const data = await res.json();
-  console.log(data.data.news_id);
+ 
+
+const showModal = (thumbnail_url) => {
+  // console.log(thumbnail_url);
+  const modalBody = document.getElementById('modal-body');
+  modalBody.textContent = ""; 
+  modalBody.innerHTML = `
+  <img src="${thumbnail_url}"/>
+  `
 }
 
-const displayNewsDetails = (news) =>{
-  // console.log(news);
-  const modalTitle = document.getElementById('newsDetailModalLabel')
-  modalTitle.innerText = "${news.title}";
-  const newsDetails = document.getElementById('news-details');
-  newsDetails.innerHTML = `
-  <img src="${news.thumbnail_url}">
-  `;
+// const loadNewsDetails = async news_id => {
+//   const url = `https://openapi.programming-hero.com/api/news/${news_id}`
+//   const res = await fetch(url);
+//   const data = await res.json();
+//   displayNewsDetails(data.data[0]);
+// }
+
+// const displayNewsDetails = (news) =>{
+//   console.log(news);
+//   const modalTitle = document.getElementById('newsDetailModalLabel')
+//   modalTitle.innerText = "";
+//   const newsDetails = document.getElementById('news-details');
+//   newsDetails.innerHTML = `
+//   <img src="${news.thumbnail_url}">
+//   `;
    
-};        
+// };        
 
 
 loadNewsCategories('8');
+
 
 
 
